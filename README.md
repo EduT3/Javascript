@@ -6,4 +6,4 @@
 | -------------  | --- |
 | :sparkles: Nome        | **Javascript**
 | :label: Tecnologias | HTML, CSS, JavaScript (tecnologias utilizadas)
-| :rocket: URL         | https://javascript-ebon-kappa.vercel.app/
+| :rocket: URL         | https://javascript-edut3.vercel.app/
