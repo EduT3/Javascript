@@ -6,4 +6,4 @@
 | -------------  | --- |
 | :sparkles: Nome        | **Javascript**
 | :label: Tecnologias | HTML, CSS, TypeScript (tecnologias utilizadas)
-| :rocket: URL         | 
+| :rocket: URL         | https://javascript-ebon-kappa.vercel.app/
