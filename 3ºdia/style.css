@@ -29,11 +29,16 @@ body {
     padding: 5px;
     border-radius: 8px;
     font-style: none;
-    margin-bottom: 10%;
   }
   button:hover{
       background-color: black;
       color: aliceblue;
       cursor: pointer;
   }
-  
+div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}

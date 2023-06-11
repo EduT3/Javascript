@@ -1,20 +1,29 @@
 body {
-  background-color: gray;
+  background-color: greenyellow;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  gap: 50px;
+  padding-top: 10%;
+  place-items: center;
+  height: 100vh;
 }
-a {
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Define 3 colunas de tamanho igual */
+  grid-gap: 20px; /* Define o espaçamento entre as células */
+}
+
+.grid-item {
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 16px;
   color: white;
-  background-color: gray;
-  margin-bottom: 50px;
-  margin-top: 70px;
-}
-a:hover {
   background-color: black;
-  border-color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.grid-item:hover {
+  background-color: red;
+  border-color: black;
 }

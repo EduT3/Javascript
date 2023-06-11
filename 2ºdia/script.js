@@ -7,7 +7,7 @@ function resposta (){
     
     console.log(nome, idade, linguagem);
 
-    document.getElementById('conversa').innerText = `Olá ${nome}, você tem ${idade} anos e já está aprendendo ${linguagem}`;
+    document.getElementById('conversa').innerText = `Olá ${nome}!, você tem ${idade} anos e já está aprendendo ${linguagem}`;
 
     let respostaLinguagem = prompt(`Você gosta de estudar ${linguagem}? Responda com o número 1 para SIM ou 2 para NÃO.`);
 
