@@ -1,51 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let btn = document.getElementById("btn");
-    let resultado = document.getElementById("resultado");
-  
-    btn.addEventListener("click", calcular);
-  
-    function calcular() {
-      let valorA = parseInt(document.getElementById("valorA").value);
-      let operacao = document.getElementById("operacao").value;
-      let valorB = parseInt(document.getElementById("valorB").value);
-  
-      if (operacao === "+") {
-        somar();
-      } else if (operacao === "-") {
-        subtrair();
-      } else if (operacao === "*") {
-        multiplicar();
-      } else if (operacao === "/") {
-        dividir();
-      }
+  const resultado = document.getElementById("resultado");
+  document.getElementById("btn").addEventListener("click", calcular);
+
+  function calcular() {
+    const textoA = document.getElementById("valorA").value.trim().replace(",", ".");
+    const textoB = document.getElementById("valorB").value.trim().replace(",", ".");
+    const operacao = document.getElementById("operacao").value.trim();
+    const a = Number(textoA);
+    const b = Number(textoB);
+    if (!textoA || !textoB || !Number.isFinite(a) || !Number.isFinite(b)) {
+      resultado.textContent = "Informe dois números válidos.";
+      return;
     }
-  
-    function somar() {
-      let valorA = parseInt(document.getElementById("valorA").value);
-      let valorB = parseInt(document.getElementById("valorB").value);
-      var resultadoSoma = valorA + valorB;
-      resultado.innerText = resultadoSoma;
+    if (operacao === "/" && b === 0) {
+      resultado.textContent = "Não é possível dividir por zero.";
+      return;
     }
-  
-    function subtrair() {
-      let valorA = parseInt(document.getElementById("valorA").value);
-      let valorB = parseInt(document.getElementById("valorB").value);
-      var resultadoSubtracao = valorA - valorB;
-      resultado.innerText = resultadoSubtracao;
+    const operacoes = { "+": () => a + b, "-": () => a - b, "*": () => a * b, "/": () => a / b };
+    if (!Object.hasOwn(operacoes, operacao)) {
+      resultado.textContent = "Escolha uma operação: +, -, * ou /.";
+      return;
     }
-  
-    function multiplicar() {
-      let valorA = parseInt(document.getElementById("valorA").value);
-      let valorB = parseInt(document.getElementById("valorB").value);
-      var resultadoMultiplicacao = valorA * valorB;
-      resultado.innerText = resultadoMultiplicacao;
-    }
-  
-    function dividir() {
-      let valorA = parseInt(document.getElementById("valorA").value);
-      let valorB = parseInt(document.getElementById("valorB").value);
-      var resultadoDivisao = valorA / valorB;
-      resultado.innerText = resultadoDivisao;
-    }
-  });
-  
+    const total = operacoes[operacao]();
+    resultado.textContent = Number.isFinite(total) ? String(total) : "Resultado fora do limite numérico.";
+  }
+});

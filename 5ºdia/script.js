@@ -3,9 +3,9 @@ let listagem = document.getElementById("listagem");
 let resposta = document.getElementById("sn");
 
 resposta.addEventListener("input", function () {
-  let valorResposta = resposta.value.toLowerCase();
+  let valorResposta = resposta.value.trim().toLowerCase();
 
-  if (valorResposta === "sim") {
+  if (valorResposta === "sim" && !document.getElementById("adicionar")) {
     listagem.innerHTML = `
       <p>Qual o nome do Produto?</p>
       <input type="text" id="adicionar">
@@ -19,8 +19,14 @@ function adicionarItem() {
   let inputAdicionar = document.getElementById('adicionar');
   let categoria = prompt("Qual a categoria do produto? (frutas, laticínios, congelados, doces)");
 
-  if (categoria && inputAdicionar.value) {
-    lista.push({ item: inputAdicionar.value, categoria: categoria });
+  if (categoria === null) return;
+  categoria = categoria.trim().toLowerCase();
+  if (!["frutas", "laticínios", "congelados", "doces"].includes(categoria)) {
+    alert("Escolha uma categoria: frutas, laticínios, congelados ou doces.");
+    return;
+  }
+  if (inputAdicionar.value.trim()) {
+    lista.push({ item: inputAdicionar.value.trim(), categoria: categoria });
     inputAdicionar.value = ""; // Limpar o campo de entrada
 
     atualizarLista();
@@ -55,15 +61,15 @@ function atualizarLista() {
     const itens = categorias[categoria];
     if (itens.length > 0) {
       const itemLista = document.createElement("li");
-      itemLista.innerText = `${categoria.charAt(0).toUpperCase() + categoria.slice(1)}:`;
+      itemLista.textContent = `${categoria.charAt(0).toUpperCase() + categoria.slice(1)}:`;
       const listaItensCategoria = document.createElement("ul");
 
       itens.forEach(function (itemObj) {
         const itemLi = document.createElement("li");
-        itemLi.innerText = itemObj.item;
+        itemLi.textContent = itemObj.item;
 
         const botaoRemover = document.createElement("button");
-        botaoRemover.innerText = "Remover";
+        botaoRemover.textContent = "Remover";
         botaoRemover.addEventListener("click", function () {
           removerItem(itemObj.indice);
         });
